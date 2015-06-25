@@ -1,6 +1,6 @@
 {
-  "name": "app",
-  "app_id": "",
+  "name": "oneway",
+  "app_id": "e82ec7d0",
   "gulpStartupTasks": [
     "sass",
     "watch"
