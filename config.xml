@@ -1,31 +1,46 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<widget id="org.onewaymedia.radio" versionCode="10" version="3.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="org.onewaymedia.radio" versionCode="10" version="300">
   <name>Oneway</name>
-  <description>
-        Phát thanh Cơ đốc trực tuyến 24/7
+  <description>&#xD;
+        Phát thanh Cơ Đốc trực tuyến 24/7 dành cho người Việt.&#xD;
     </description>
-  <author email="onewaymediavn@gmail.com" href="http://oneway.vn/">
-      Oneway Media
+  <author href="http://oneway.vn" email="onewaymediavn@gmail.com">&#xD;
+        Oneway Media&#xD;
     </author>
   <content src="www/index.html"/>
-  <access origin="*"/>
-  <gap:platform name="android" />
-  <gap:platform name="ios" />
-  <preference name='phonegap-version' value='cli-5.1.1' />
-  <preference name="webviewbounce" value="false"/>
-  <preference name="UIWebViewBounce" value="false"/>
-  <preference name="DisallowOverscroll" value="true"/>
-  <preference name="android-minSdkVersion" value="16"/>
-  <preference name="BackupWebStorage" value="none"/>
+  <gap:platform name="ios"/>
+  <preference name="permissions" value="none"/>
+  <preference name="orientation" value="default"/>
+  <preference name="target-device" value="universal"/>
+  <preference name="fullscreen" value="true"/>
+  <preference name="webviewbounce" value="true"/>
+  <preference name="prerendered-icon" value="false"/>
+  <preference name="stay-in-webview" value="false"/>
+  <preference name="ios-statusbarstyle" value="black-opaque"/>
+  <preference name="detect-data-types" value="false"/>
+  <preference name="exit-on-suspend" value="false"/>
+  <preference name="show-splash-screen-spinner" value="false"/>
+  <preference name="auto-hide-splash-screen" value="true"/>
+  <preference name="android-minSdkVersion" value="14"/>
+  <preference name="android-installLocation" value="auto"/>
+  <preference name="phonegap-version" value="cli-5.1.1"/>
   <preference name="SplashScreen" value="screen"/>
   <preference name="SplashScreenDelay" value="3000"/>
-  <feature name="StatusBar">
-    <param name="ios-package" value="CDVStatusBar" onload="true"/>
-  </feature>
+  <gap:plugin name="org.apache.cordova.device"/>
+  <gap:plugin name="org.apache.cordova.network-information"/>
   <gap:config-file gap:platform="ios" parent="CFBundleShortVersionString">
-  <string>300</string>
+    <string>300</string>
   </gap:config-file>
+  <access origin="*"/>
+  <plugin name="cordova-plugin-whitelist" version="1"/>
+  <allow-intent href="http://*/*"/>
+  <allow-intent href="https://*/*"/>
+  <allow-intent href="tel:*"/>
+  <allow-intent href="sms:*"/>
+  <allow-intent href="mailto:*"/>
+  <allow-intent href="geo:*"/>
   <platform name="android">
+    <allow-intent href="market:*"/>
     <icon src="resources\android\icon\drawable-ldpi-icon.png" density="ldpi"/>
     <icon src="resources\android\icon\drawable-mdpi-icon.png" density="mdpi"/>
     <icon src="resources\android\icon\drawable-hdpi-icon.png" density="hdpi"/>
@@ -46,6 +61,8 @@
     <splash src="resources\android\splash\drawable-port-xxxhdpi-screen.png" density="port-xxxhdpi"/>
   </platform>
   <platform name="ios">
+    <allow-intent href="itms:*"/>
+    <allow-intent href="itms-apps:*"/>
     <icon src="resources\ios\icon\icon.png" width="57" height="57"/>
     <icon src="resources\ios\icon\icon@2x.png" width="114" height="114"/>
     <icon src="resources\ios\icon\icon-40.png" width="40" height="40"/>
@@ -73,5 +90,5 @@
     <splash src="resources\ios\splash\Default@2x~iphone.png" width="640" height="960"/>
     <splash src="resources\ios\splash\Default~iphone.png" width="320" height="480"/>
   </platform>
-  <icon src="resources\ios\icon\icon-small@3x.png"/>
+  <icon src="resources\android\icon\drawable-xhdpi-icon.png"/>
 </widget>

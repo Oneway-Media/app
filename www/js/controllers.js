@@ -1,56 +1,96 @@
-angular.module('starter.controllers', [])
+angular.module('app.controllers', [])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout) {
-  
-  // With the new view caching in Ionic, Controllers are only called
-  // when they are recreated or on app start, instead of every page change.
-  // To listen for when this page is active (for example, to refresh data),
-  // listen for the $ionicView.enter event:
-  //$scope.$on('$ionicView.enter', function(e) {
-  //});
-  
-  // Form data for the login modal
-  $scope.loginData = {};
+//  Overcome view cache
+//    $scope.$on('$ionicView.enter', function (e) {
+//        
+//    });
 
-  // Create the login modal that we will use later
-  $ionicModal.fromTemplateUrl('templates/login.html', {
-    scope: $scope
-  }).then(function(modal) {
-    $scope.modal = modal;
-  });
+.controller('AppCtrl', function ($rootScope, $ionicModal, $ionicPopup) { // console.log('App Controller ...');
+    
+    // Sample data
+    $rootScope.sampleData = {
+        audio: [
+            {title: '1'},
+            {title: '3'},
+            {title: '10'},
+            {title: '20'},
+            {title: '30'}
+        ],
+        news: [
+            {title: '52'},
+            {title: '13'},
+            {title: '10'},
+            {title: '20'},
+            {title: '11'}
+        ]
+    };
+    
+    // Welcome Modal
+    $ionicModal.fromTemplateUrl('templates/welcome-modal.html', {
+        scope: $rootScope,
+        animation: 'slide-in-up'
+    }).then(function (modal) {
+        $rootScope.welcomeModal = modal;
+        if( localStorage.getItem('ow-welcome-off') != 'true' ) {
+            $rootScope.welcomeModal.show();            
+            localStorage.setItem('ow-welcome-off', 'true');
+        }
+        $rootScope.openWelcomeModal = function () {
+            $rootScope.welcomeModal.show();
+        };
+        $rootScope.closeWelcomeModal = function () {
+            $rootScope.welcomeModal.hide();
+        };
+        $rootScope.$on('$destroy', function () {
+            $rootScope.welcomeModal.remove();
+        });
+    });
+    
+    // Alert
+    $rootScope.alertMe = function () {
+        alert('Hello there!');
+    };
 
-  // Triggered in the login modal to close it
-  $scope.closeLogin = function() {
-    $scope.modal.hide();
-  };
-
-  // Open the login modal
-  $scope.login = function() {
-    $scope.modal.show();
-  };
-
-  // Perform the login action when the user submits the login form
-  $scope.doLogin = function() {
-    console.log('Doing login', $scope.loginData);
-
-    // Simulate a login delay. Remove this and replace with your login
-    // code if using a login system
-    $timeout(function() {
-      $scope.closeLogin();
-    }, 1000);
-  };
 })
 
-.controller('PlaylistsCtrl', function($scope) {
-  $scope.playlists = [
-    { title: 'Reggae', id: 1 },
-    { title: 'Chill', id: 2 },
-    { title: 'Dubstep', id: 3 },
-    { title: 'Indie', id: 4 },
-    { title: 'Rap', id: 5 },
-    { title: 'Cowbell', id: 6 }
-  ];
+.controller('FrontCtrl', function ($scope) { // console.log('Front Controller ...');    
+    
+    
+
 })
 
-.controller('PlaylistCtrl', function($scope, $stateParams) {
+.controller('HomeCtrl', function ($scope) { // console.log('Home Controller ...');
+    
+
+})
+
+.controller('SettingCtrl', function ($scope, $ionicModal, $ionicPopup) { // console.log('Setting Controller ...');
+    
+    // About Modal
+    $ionicModal.fromTemplateUrl('templates/about-modal.html', {
+        scope: $scope,
+        animation: 'slide-in-up'
+    }).then(function (modal) {
+        $scope.aboutModal = modal;
+        $scope.openAboutModal = function () {
+            $scope.aboutModal.show();
+        };
+        $scope.closeAboutModal = function () {
+            $scope.aboutModal.hide();
+        };
+        $scope.$on('$destroy', function () {
+            $scope.aboutModal.remove();
+        });
+    });
+    
+    // Record Popup
+    $scope.openRecordPopup = function () {
+        $ionicPopup.alert({
+            title: 'Don\'t eat that!',
+            template: 'It might taste good'
+        }).then(function (res) {
+            console.log('Thank you for not eating my delicious ice cream cone');
+        });
+    };
+
 });

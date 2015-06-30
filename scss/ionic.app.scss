@@ -15,9 +15,37 @@ $royal:                           #886aea !default;
 $dark:                            #444 !default;
 */
 
+$positive:                        #009688 !default;
+
 // The path for our ionicons font files, relative to the built CSS in www/css
 $ionicons-font-path: "../lib/ionic/fonts" !default;
 
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
+
+// Media Player
+//@import "_player";
+
+@media (min-width: 680px) { // Tablet (big screen)
+    
+    #player_container {
+        //background: $positive;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        z-index: 99999;
+        height: 70px;
+    }
+    
+}
+
+@media (max-width: 679px) { // Phone 
+    
+    #player_container {
+        background: red;
+    }
+    
+}
+
 
