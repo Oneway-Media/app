@@ -46,11 +46,40 @@ angular.module('app.controllers', [])
         });
     });
     
+    
     // Alert
     $rootScope.alertMe = function () {
         alert('Hello there!');
     };
-
+    
+    // Open Player Content
+    $rootScope.openPlayerContent = function () {
+        $('#player_content_wrapper').fadeIn(300);
+    };
+    // ClosePlayer Content
+    $rootScope.closePlayerContent = function () {
+        $('#player_content_wrapper').fadeOut(300);
+    };
+    
+    // showContentPlaylist()
+    $rootScope.showContentPlaylist = function () {
+        $('#player_content_text').fadeOut(30);
+        $('#player_content_playlist').fadeIn(300);
+        
+        // Button
+        $('#player_content_text_button').removeClass('active activated');
+        $('#player_content_playlist_button').addClass('active');
+    };
+    // showContentText()
+    $rootScope.showContentText = function () {
+        $('#player_content_playlist').fadeOut(30);
+        $('#player_content_text').fadeIn(300);
+        
+        // Button
+        $('#player_content_playlist_button').removeClass('active activated');
+        $('#player_content_text_button').addClass('active');
+    };
+    
 })
 
 .controller('FrontCtrl', function ($scope) { // console.log('Front Controller ...');    

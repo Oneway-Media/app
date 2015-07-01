@@ -2696,12 +2696,8 @@ ion-infinite-scroll {
     color: #666666;
     font-size: 30px;
     color: #666666; }
-  ion-infinite-scroll .icon:before, ion-infinite-scroll .spinner {
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0); }
   ion-infinite-scroll:not(.active) .spinner, ion-infinite-scroll:not(.active) .icon:before {
-    -webkit-transform: translate3d(-1000px, 0, 0);
-    transform: translate3d(-1000px, 0, 0); }
+    display: none; }
 
 .overflow-scroll {
   overflow-x: hidden;
@@ -3044,6 +3040,8 @@ a.subdued {
   right: 0;
   left: 0;
   z-index: 9;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
   box-sizing: border-box;
   padding: 5px;
   width: 100%;
@@ -4109,6 +4107,13 @@ ion-tabs.tabs-color-active-dark .tab-item {
       -ms-transition: color .2s ease;
       -o-transition: color .2s ease;
       transition: color .2s ease; }
+  .tabs-top.tabs-striped:not(.tabs-icon-left):not(.tabs-icon-top) .tab-item.tab-item-active .tab-title, .tabs-top.tabs-striped:not(.tabs-icon-left):not(.tabs-icon-top) .tab-item.tab-item-active i, .tabs-top.tabs-striped:not(.tabs-icon-left):not(.tabs-icon-top) .tab-item.active .tab-title, .tabs-top.tabs-striped:not(.tabs-icon-left):not(.tabs-icon-top) .tab-item.active i, .tabs-top.tabs-striped:not(.tabs-icon-left):not(.tabs-icon-top) .tab-item.activated .tab-title, .tabs-top.tabs-striped:not(.tabs-icon-left):not(.tabs-icon-top) .tab-item.activated i {
+    display: block;
+    margin-top: -1px; }
+  .tabs-top.tabs-striped.tabs-icon-left .tab-item {
+    margin-top: 1px; }
+    .tabs-top.tabs-striped.tabs-icon-left .tab-item.tab-item-active .tab-title, .tabs-top.tabs-striped.tabs-icon-left .tab-item.tab-item-active i, .tabs-top.tabs-striped.tabs-icon-left .tab-item.active .tab-title, .tabs-top.tabs-striped.tabs-icon-left .tab-item.active i, .tabs-top.tabs-striped.tabs-icon-left .tab-item.activated .tab-title, .tabs-top.tabs-striped.tabs-icon-left .tab-item.activated i {
+      margin-top: -0.1em; }
 
 /* Allow parent element to have tabs-top */
 /* If you change this, change platform.scss as well */
@@ -4164,11 +4169,11 @@ ion-tabs.tabs-color-active-dark .tab-item {
 
 .tabs-icon-left.tabs .tab-item, .tabs-icon-left > .tabs .tab-item, .tabs-icon-right.tabs .tab-item, .tabs-icon-right > .tabs .tab-item {
   font-size: 10px; }
-  .tabs-icon-left.tabs .tab-item .icon, .tabs-icon-left > .tabs .tab-item .icon, .tabs-icon-right.tabs .tab-item .icon, .tabs-icon-right > .tabs .tab-item .icon {
+  .tabs-icon-left.tabs .tab-item .icon, .tabs-icon-left.tabs .tab-item .tab-title, .tabs-icon-left > .tabs .tab-item .icon, .tabs-icon-left > .tabs .tab-item .tab-title, .tabs-icon-right.tabs .tab-item .icon, .tabs-icon-right.tabs .tab-item .tab-title, .tabs-icon-right > .tabs .tab-item .icon, .tabs-icon-right > .tabs .tab-item .tab-title {
     display: inline-block;
     vertical-align: top;
     margin-top: -.1em; }
-    .tabs-icon-left.tabs .tab-item .icon:before, .tabs-icon-left > .tabs .tab-item .icon:before, .tabs-icon-right.tabs .tab-item .icon:before, .tabs-icon-right > .tabs .tab-item .icon:before {
+    .tabs-icon-left.tabs .tab-item .icon:before, .tabs-icon-left.tabs .tab-item .tab-title:before, .tabs-icon-left > .tabs .tab-item .icon:before, .tabs-icon-left > .tabs .tab-item .tab-title:before, .tabs-icon-right.tabs .tab-item .icon:before, .tabs-icon-right.tabs .tab-item .tab-title:before, .tabs-icon-right > .tabs .tab-item .icon:before, .tabs-icon-right > .tabs .tab-item .tab-title:before {
       font-size: 24px;
       line-height: 49px; }
 
@@ -4622,7 +4627,7 @@ ion-tabs.tabs-color-active-dark .tab-item {
   transition: 0.2s opacity linear;
   visibility: hidden;
   opacity: 0; }
-  .loading-container:not(.visible) .icon {
+  .loading-container:not(.visible) .icon, .loading-container:not(.visible) .spinner {
     display: none; }
   .loading-container.visible {
     visibility: visible; }
@@ -4791,7 +4796,7 @@ a.item {
   z-index: 2;
   padding: 16px 49px 16px 16px;
   border: none;
-  background-color: white; }
+  background-color: #fff; }
 
 a.item-content {
   display: block;
@@ -6987,6 +6992,9 @@ a.button {
     border-right-width: 1px;
     border-radius: 0px 2px 2px 0px; }
 
+.button-bar > .button-small:before, .button-bar > .button-small .icon:before {
+  line-height: 28px; }
+
 /**
  * Grid
  * --------------------------------------------------
@@ -7528,6 +7536,16 @@ a.button {
   top: 113px; }
 .platform-ios.platform-cordova:not(.fullscreen) .has-header.has-subheader.has-tabs-top {
   top: 157px; }
+.platform-ios.platform-cordova .popover .bar-header:not(.bar-subheader) {
+  height: 44px; }
+  .platform-ios.platform-cordova .popover .bar-header:not(.bar-subheader).item-input-inset .item-input-wrapper {
+    margin-top: -1px; }
+  .platform-ios.platform-cordova .popover .bar-header:not(.bar-subheader) > * {
+    margin-top: 0; }
+.platform-ios.platform-cordova .popover .has-header, .platform-ios.platform-cordova .popover .bar-subheader {
+  top: 44px; }
+.platform-ios.platform-cordova .popover .has-subheader {
+  top: 88px; }
 .platform-ios.platform-cordova.status-bar-hide {
   margin-bottom: 20px; }
 
@@ -7676,14 +7694,195 @@ a.button {
   transition-duration: 0s; }
 
 @media (min-width: 680px) {
+  ion-content {
+    bottom: 60px !important; }
   #player_container {
-    position: fixed;
+    position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
-    z-index: 99999;
-    height: 70px; } }
+    z-index: 999;
+    height: 60px; }
+  #player_open_content {
+    width: 5%; }
+  #player_playing_item {
+    color: #FFF;
+    width: 30%;
+    padding: 0 10px 0 0;
+    border: none;
+    background: none; }
+    #player_playing_item img, #player_playing_item span {
+      float: left; }
+    #player_playing_item img {
+      width: 50px;
+      height: 50px;
+      border-radius: 5px; }
+    #player_playing_item span {
+      margin: 8px 0 0 15px; }
+  .player_seek_timing {
+    width: 40%;
+    margin: 15px 0; }
+    .player_seek_timing .player_seek_wrapper {
+      width: 70%;
+      position: relative;
+      background: #B2DFDB;
+      height: 13px;
+      cursor: pointer;
+      float: left;
+      margin-top: 3px;
+      border-radius: 10px; }
+      .player_seek_timing .player_seek_wrapper div {
+        height: 13px;
+        position: absolute;
+        border-radius: 10px; }
+      .player_seek_timing .player_seek_wrapper div:first-child {
+        background: #009688;
+        width: 20%; }
+      .player_seek_timing .player_seek_wrapper div:last-child {
+        background: #00796B;
+        width: 10%; }
+    .player_seek_timing .player_timing {
+      width: 30%;
+      float: right;
+      text-align: right; }
+  #player_buttons {
+    width: 25%;
+    text-align: right; }
+    #player_buttons button {
+      width: 50px;
+      height: 50px; }
+    #player_buttons #player_button_play:before {
+      font-size: 50px; }
+  #player_content_wrapper {
+    display: none;
+    z-index: 990;
+    position: absolute;
+    background: rgba(0, 0, 0, 0.4);
+    width: 100%;
+    height: 100%;
+    padding-bottom: 80px; }
+    #player_content_wrapper #player_content_content {
+      height: 100%;
+      max-height: 100%;
+      background: #FFF;
+      border-radius: 5px;
+      position: relative;
+      overflow: hidden; }
+      #player_content_wrapper #player_content_content ion-content {
+        margin: 0 0 10px 0;
+        bottom: 0 !important; }
+      #player_content_wrapper #player_content_content #player_content_playlist_button.active, #player_content_wrapper #player_content_content #player_content_playlist_button.activated, #player_content_wrapper #player_content_content #player_content_text_button.active, #player_content_wrapper #player_content_content #player_content_text_button.activated {
+        background: none;
+        box-shadow: none; }
+      #player_content_wrapper #player_content_content #player_content_playlist_button {
+        min-width: 300px;
+        max-width: 300px;
+        transition: all .5s ease;
+        border: none; }
+      #player_content_wrapper #player_content_content #player_content_text_button {
+        transition: all .5s ease;
+        border: none; }
+      #player_content_wrapper #player_content_content #player_content_playlist, #player_content_wrapper #player_content_content #player_content_text {
+        display: block !important; }
+      #player_content_wrapper #player_content_content #player_content_playlist {
+        min-width: 300px;
+        max-width: 300px; }
+      #player_content_wrapper #player_content_content #player_content_text {
+        margin-left: 300px;
+        padding: 10px; }
+    #player_content_wrapper ion-footer-bar {
+      display: none; } }
 
 @media (max-width: 679px) {
+  ion-content {
+    bottom: 0 !important; }
   #player_container {
-    background: red; } }
+    position: absolute;
+    z-index: 999;
+    bottom: -45px;
+    left: 0;
+    width: 100%; }
+  #player_open_content {
+    background: #CCC;
+    position: fixed;
+    width: 35px;
+    height: 35px;
+    bottom: 55px;
+    right: 80px;
+    border-radius: 100%; }
+  #player_open_content:before {
+    font-size: 20px; }
+  #player_open_content.activated {
+    opacity: 1; }
+  #player_playing_item {
+    display: none; }
+  .player_seek_timing {
+    width: 100%;
+    margin: 8px 0; }
+    .player_seek_timing .player_seek_wrapper {
+      width: 70%;
+      position: relative;
+      background: #B2DFDB;
+      height: 13px;
+      cursor: pointer;
+      float: left;
+      margin-top: 3px;
+      border-radius: 10px; }
+      .player_seek_timing .player_seek_wrapper div {
+        height: 13px;
+        position: absolute;
+        border-radius: 10px; }
+      .player_seek_timing .player_seek_wrapper div:first-child {
+        background: #009688;
+        width: 20%; }
+      .player_seek_timing .player_seek_wrapper div:last-child {
+        background: #00796B;
+        width: 10%; }
+    .player_seek_timing .player_timing {
+      width: 30%;
+      float: right;
+      text-align: right; }
+  #player_buttons #player_button_prev {
+    display: none; }
+  #player_buttons #player_button_play {
+    background: #FF5252;
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 55px;
+    right: 15px;
+    padding: 10px;
+    border-radius: 100%; }
+  #player_buttons #player_button_play:before {
+    font-size: 35px; }
+  #player_buttons #player_button_play.activated {
+    opacity: 1; }
+  #player_buttons #player_button_prev {
+    display: none; }
+  #player_content_wrapper {
+    display: none;
+    z-index: 990;
+    position: absolute;
+    background: rgba(0, 0, 0, 0.4);
+    width: 100%;
+    height: 100%;
+    padding-bottom: 80px; }
+    #player_content_wrapper #player_content_content {
+      height: 100%;
+      max-height: 100%;
+      background: #FFF;
+      border-radius: 5px;
+      position: relative;
+      overflow: hidden; }
+      #player_content_wrapper #player_content_content ion-content {
+        margin: 0 0 0 0; }
+      #player_content_wrapper #player_content_content #player_content_playlist_button {
+        transition: all .5s ease;
+        border: none; }
+      #player_content_wrapper #player_content_content #player_content_text_button {
+        transition: all .5s ease;
+        border: none; }
+      #player_content_wrapper #player_content_content #player_content_playlist {
+        display: block; }
+      #player_content_wrapper #player_content_content #player_content_text {
+        display: none; } }

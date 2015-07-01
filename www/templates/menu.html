@@ -18,25 +18,67 @@
         
         <!-- Media Player -->
         <div id="player_container" class="bar bar-positive">
-            <button id="player_open_panel" class="button button-icon icon ion-ios-more" ng-click="alertMe()"></button>
-            <button id="player_playing_item" class="button button-clear">
-                <img src="https://cdn4.iconfinder.com/data/icons/ballicons-2-free/100/heart-128.png" />
-                <span>Title here ...</span>
+            <button id="player_open_content" class="button button-icon icon ion-android-more-vertical" ng-click="openPlayerContent()"></button>
+            <button id="player_playing_item" ng-click="openPlayerContent()">
+                <img src="http://oneway.vn/wp-content/uploads/2014/12/oneway.vn_dscb-150x150.jpg" />
+                <span>Lorem ipsum dolor sit ...</span>
             </button>
-            <div id="player_seek_timing">
-                <div id="player_seek_wrapper">
-                   <div id="player_seek_buffered"></div>
-                   <div id="player_seek_played"></div>
-               </div>
-               <div>--:-- / 07:00</div>
+            <div class="player_seek_timing">
+                <div class="player_seek_wrapper">
+                   <div class="player_seek_buffered"></div>
+                   <div class="player_seek_played"></div>
+                </div>
+                <div class="player_timing">--:-- / 07:00</div>
             </div>
             <div id="player_buttons">
                 <button id="player_button_prev" class="button button-icon icon ion-ios-rewind" ng-click="alertMe()"></button>
                 <button id="player_button_play" class="button button-icon icon ion-ios-play" ng-click="alertMe()"></button>
                 <button id="player_button_next" class="button button-icon icon ion-ios-fastforward" ng-click="alertMe()"></button>
-            </div>
-            <div id="player_panel">Panel</div>
+            </div>            
         </div>
+        
+        <div id="player_content_wrapper">
+            <div id="player_content_content">
+                <ion-header-bar align-title="left" class="bar-positive">
+                    <div class="button-bar">
+                        <a class="button icon-left ion-radio-waves activated" id="player_content_playlist_button" ng-click="showContentPlaylist()">Đang phát</a>
+                        <a class="button icon-left ion-document-text" id="player_content_text_button" ng-click="showContentText()">Nội dung</a>
+                    </div>
+                    <button class="button button-icon button-clear icon ion-android-close" ng-click="closePlayerContent()"></button>
+                </ion-header-bar>
+                    <ion-content id="player_content_playlist">
+                        <ion-list>
+                            <ion-item>aaa</ion-item>
+                            <ion-item>aaa</ion-item>
+                            <ion-item>aaa</ion-item>
+                            <ion-item>aaa</ion-item>
+                            <ion-item>aaa</ion-item>
+                            <ion-item>aaa</ion-item>
+                            <ion-item>aaa</ion-item>
+                            <ion-item>aaa</ion-item>
+                            <ion-item>aaa</ion-item>
+                            <ion-item>aaa</ion-item>
+                            <ion-item>aaa</ion-item>
+                            <ion-item>aaa</ion-item>
+                            <ion-item>aaa</ion-item>
+                        </ion-list>
+                    </ion-content>
+                    
+                    <ion-content id="player_content_text">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga numquam expedita fugit quisquam dignissimos, voluptatibus molestias impedit tempora vitae ab deleniti dicta, voluptatum quis beatae, aliquid reiciendis natus minima. Architecto.
+                    </ion-content>
+                <ion-footer-bar class="bar bar-footer">
+                    <div class="player_seek_timing">
+                        <div class="player_seek_wrapper">
+                           <div class="player_seek_buffered"></div>
+                           <div class="player_seek_played"></div>
+                        </div>
+                        <div class="player_timing">--:-- / 07:00</div>
+                    </div>
+                </ion-footer-bar>
+            </div>
+        </div>
+        
         <!-- / Media Player -->
         
     </ion-side-menu-content>

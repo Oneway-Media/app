@@ -17,6 +17,7 @@ angular.module('app', ['ionic', 'app.controllers', 'app.services'])
     $ionicPlatform.on('offline', function () {
         // Offline
     });
+    
 })
 
 .config(function ($stateProvider, $urlRouterProvider) {
