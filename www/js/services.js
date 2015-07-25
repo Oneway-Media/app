@@ -1,18 +1,9 @@
-angular.module('app.services', [])
-
-// Audio data API
-.factory('audioAPI', function () {
-    return {};
-})
-
-// News data API
-.factory('newsAPI', function () {
-    return {};
-})
-
-// Plugin API
-.factory('pluginAPI', function () {
-    return {        
-        // Do something ...
-    };
-});
+angular.module('app.services',  [
+    'service.setting',    
+    'service.plugin',
+    'service.audio',
+    'service.news',
+    'service.player',
+    'service.helper',
+    'service.search'
+]);

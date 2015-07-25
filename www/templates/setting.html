@@ -1,32 +1,14 @@
 <ion-view view-title="Setting">
-    <ion-header-bar class="bar-positive">
-        <h1 class="title">Setting</h1>
-        <a class="button button-icon button-clear ion-home" href="#/app/home"></a>
+    <ion-header-bar class="bar-balanced">
+        <button class="button button-icon button-clear ion-navicon" menu-toggle="left"></button> 
+        <h1 class="title">Thiết lập</h1>
     </ion-header-bar>
     <ion-content>
         <ion-list>
             <!-- SETTING -->
-            <ion-item class="item-divider">Thiết lập</ion-item>    
-            <ion-item ng-click="openWelcomeModal()">
-                Chào mừng!
-            </ion-item>
-            
-            <!-- CONTACT -->
-            <ion-item class="item-divider">Liên hệ</ion-item>
-            <ion-item class="item-icon-left" href="mailto:onewaymediavn@gmail.com">
-                <i class="icon ion-ios-email"></i> Gửi Email
-            </ion-item>
-            <ion-item class="item-icon-left" href="http://oneway.vn/">
-                <i class="icon ion-android-globe"></i> Oneway.vn
-            </ion-item>
-            <ion-item class="item-icon-left" ng-click="openRecordPopup()">
-                <i class="icon ion-android-microphone"></i> Thu âm
-            </ion-item>
-            
-            <!-- ABOUT -->
-            <ion-item class="item-divider">Phiên bản: V3.0.0</ion-item>
-            <ion-item class="item-icon-left" ng-click="openAboutModal()">
-                <i class="icon ion-ios-information"></i> Giới thiệu
+            <ion-item class="item-divider">Khác</ion-item>    
+            <ion-item ng-click="settings.openWelcomeModal()">
+                Cửa sổ Chào mừng!
             </ion-item>
         </ion-list>
     </ion-content>

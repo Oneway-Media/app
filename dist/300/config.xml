@@ -34,7 +34,7 @@
     <preference name="permissions"                value="none"/>
 
     <!-- Customize your app and platform with the preference element. -->
-    <preference name="orientation"                value="default" />        <!-- all: default means both landscape and portrait are enabled -->
+    <preference name="orientation"                value="portrait" />        <!-- all: default means both landscape and portrait are enabled -->
     <preference name="target-device"              value="universal" />      <!-- all: possible values handset, tablet, or universal -->
     <preference name="fullscreen"                 value="false" />           <!-- all: hides the status bar at the top of the screen -->
     <preference name="webviewbounce"              value="true" />           <!-- ios: control whether the screen 'bounces' when scrolled beyond the top -->
@@ -54,30 +54,24 @@
     <!-- Plugins -->
 
     <!-- Core plugins -->
-<!--    <gap:plugin name="org.apache.cordova.battery-status" />-->
-<!--    <gap:plugin name="org.apache.cordova.camera" />-->
-<!--    <gap:plugin name="org.apache.cordova.media-capture" />-->
-<!--    <gap:plugin name="org.apache.cordova.console" />-->
-<!--    <gap:plugin name="org.apache.cordova.contacts" />-->
-    <gap:plugin name="org.apache.cordova.device" />
-<!--    <gap:plugin name="org.apache.cordova.device-motion" />-->
-<!--    <gap:plugin name="org.apache.cordova.device-orientation" />-->
-<!--    <gap:plugin name="org.apache.cordova.dialogs" />-->
-<!--    <gap:plugin name="org.apache.cordova.file" />-->
-<!--    <gap:plugin name="org.apache.cordova.file-transfer" />-->
-<!--    <gap:plugin name="org.apache.cordova.geolocation" />-->
-<!--    <gap:plugin name="org.apache.cordova.globalization" />-->
-<!--    <gap:plugin name="org.apache.cordova.inappbrowser" />-->
-<!--    <gap:plugin name="org.apache.cordova.media" />-->
-    <gap:plugin name="org.apache.cordova.network-information" />
-<!--    <gap:plugin name="org.apache.cordova.splashscreen" />-->
-<!--    <gap:plugin name="org.apache.cordova.vibration" />-->
+    <gap:plugin name="org.apache.cordova.network-information" version="0.2.12" />
+	<gap:plugin name="org.apache.cordova.media-capture" version="0.3.3" />
+	<!-- <gap:plugin name="org.apache.cordova.statusbar" version="0.1.4" /> -->
+	<gap:plugin name="org.apache.cordova.inappbrowser" version="0.5.2" />
+	<!-- <gap:plugin name="com.ionic.keyboard" version="1.0.3" /> -->
+	<gap:plugin name="org.apache.cordova.splashscreen" version="0.3.4" />
+	<gap:plugin name="org.apache.cordova.file" version="1.3.1" />
+    <gap:plugin name="org.apache.cordova.device" version="0.2.12" />
+	
 
     <!-- Third party plugins -->
-    <!-- A list of available plugins are available at https://build.phonegap.com/plugins -->
-    <!--
-        <gap:plugin name="com.phonegap.plugins.barcodescanner" />
-    -->
+    <!-- A list of available plugins are available at https://build.phonegap.com/plugins -->	
+	<gap:plugin name="nl.x-services.plugins.backgroundaudio" version="1.0.0" />
+	<!-- <gap:plugin name="com.verso.cordova.clipboard" version="0.1.0" /> -->
+	<gap:plugin name="nl.x-services.plugins.socialsharing" version="4.3.8" />
+	<!-- <gap:plugin name="org.apache.cordova.dialogs" version="0.2.10" /> -->
+	<!-- <gap:plugin name="de.appplant.cordova.plugin.hidden-statusbar-overlay" version="1.2.0" /> -->
+	<gap:plugin name="com.hutchind.cordova.plugins.streamingmedia" version="0.1.3" />
 
     <!-- Default app icon/splash -->
     <icon src="icon.png" />
@@ -104,7 +98,7 @@
     <gap:splash src="resources/ios/splash/Default@2x~iphone.png"      gap:platform="ios"     width="640" height="960" />
     <gap:splash src="resources/ios/splash/Default-568h@2x~iphone.png" gap:platform="ios"     width="640" height="1136" />
     <gap:splash src="resources/ios/splash/Default-Portrait~ipad.png"           gap:platform="ios"     width="768" height="1024" />
-    <gap:splash src="resources/ios/splash/Default-Landscape~ipad.png"          gap:platform="ios"     width="1024" height="768" />
+    <!-- <gap:splash src="resources/ios/splash/Default-Landscape~ipad.png"          gap:platform="ios"     width="1024" height="768" /> -->
 
     <gap:config-file gap:platform="ios" parent="CFBundleShortVersionString">
     <string>300</string>
@@ -126,7 +120,7 @@
     <access origin="*"/>
     <!-- Added the following intents to support the removal of whitelist code from base cordova to a plugin -->
     <!-- Whitelist configuration. Refer to https://cordova.apache.org/docs/en/edge/guide_appdev_whitelist_index.md.html -->
-    <plugin name="cordova-plugin-whitelist" version="1" />
+	<plugin name="cordova-plugin-whitelist" version="1" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
     <allow-intent href="tel:*" />

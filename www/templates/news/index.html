@@ -1,0 +1,63 @@
+<ion-view view-title="News">
+    
+    
+    <ion-header-bar class="bar-assertive item-input-inset" style="padding: 5px;z-index: 999;">        
+        <button class="button button-icon button-clear ion-navicon" menu-toggle="left"></button> 
+        <h1 class="title">Tin Tức</h1>
+        <button class="button button-clear icon ion-ios-search" ng-click="search.openSearchPanel()"></button>
+    </ion-header-bar>
+    
+    
+    
+    <ion-content class="has-header">       
+        <div class="grid-container-fluid">
+            <div class="grid-row">
+                               
+                <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2"></div>                
+                
+                <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+                    
+                    <!-- Actions -->
+                    <div class="list card">
+                        <div class="item item-divider">Thao tác: </div>
+                        <a class="item item-icon-right" href="#/app/news/category/tat-ca">
+                            tat-ca
+                        </a>
+                        <a class="item item-icon-right" href="#/app/news/category/trong-nuoc">
+                            trong-nuoc
+                        </a>
+                    </div> 
+                    
+<!--
+                    <div class="list card">
+                        <a class="item item-text-wrap home_colorblock item-positive">
+                            <h1>Radio Trực tuyến</h1>
+                        </a>
+                        
+                        <div class="item item-divider">Audio đã phát: </div>
+                        
+                        <ion-list>
+                            <a class="item item-thumbnail-left wrap_title" ng-repeat="audio in audio['tat-ca'] | limitTo:10">
+                                <img ng-src="{{audio.thumbnail}}">
+                                <h2>{{audio.title | clip}}</h2>
+                                <p>{{audio.date | date}}</p>
+                                <div class="general_extra_buttons">
+                                    <button class="button button-light icon ion-android-share-alt" ng-click="$event.stopPropagation();"></button>
+                                </div>
+                            </a>
+                        </ion-list>
+                    </div>
+-->
+                    
+                    
+                </div>
+                
+                <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2"></div>
+                
+            </div>           
+        </div>
+        
+        
+    </ion-content>
+    
+</ion-view>

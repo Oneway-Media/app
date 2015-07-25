@@ -1,0 +1,153 @@
+<ion-side-menus enable-menu-with-back-views="true">
+    <ion-side-menu-content>
+<!--
+        <ion-nav-bar class="bar-balanced">
+            <ion-nav-back-button>
+            </ion-nav-back-button>
+
+            <ion-nav-buttons side="left">
+                <button class="button button-icon button-clear ion-navicon" menu-toggle="left"></button>
+            </ion-nav-buttons>
+            <ion-nav-buttons side="right">
+                <button class="button button-icon button-clear ion-ios-search"></button>
+                <button class="button button-icon button-clear ion-ios-more" menu-toggle="right"></button>
+            </ion-nav-buttons>
+        </ion-nav-bar>
+-->
+        <ion-nav-view name="menuContent"></ion-nav-view>
+        
+        <!-- Media Player -->
+        <div id="player_container" class="bar bar-balanced">
+            <button id="player_open_content" class="button button-icon icon ion-android-more-vertical float_button" ng-click="player.openPlayerContent()"></button>
+            <button id="player_playing_item" ng-click="player.openPlayerContent()">
+                <img ng-src="http://oneway.vn/wp-content/uploads/2014/12/oneway.vn_dscb-150x150.jpg" />
+                <span>Lorem ipsum dolor sit ...</span>
+            </button>
+            <div class="player_seek_timing">
+                <div class="player_seek_wrapper">
+                   <div class="player_seek_buffered"></div>
+                   <div class="player_seek_played"></div>
+                </div>
+                <div class="player_timing"><span class="player_timing_timer">--:--</span> / <span class="player_timing_duration">--:--</span></div>
+            </div>
+            <div id="player_buttons">
+                <button id="player_button_prev" class="button button-icon icon ion-ios-rewind" ng-click="alertMe()"></button>
+                <button id="player_button_play" class="button button-icon icon ion-ios-play float_button" ng-click="player.playButton()"></button>
+                <button id="player_button_next" class="button button-icon icon ion-ios-fastforward" ng-click="alertMe()"></button>
+            </div>            
+        </div>        
+        <div id="player_content_wrapper">
+            <div id="player_content_content">
+                <ion-header-bar align-title="left" class="bar-stable">
+                    <div class="button-bar">
+                        <a class="button icon-left ion-radio-waves" id="player_content_playlist_button" ng-click="player.showContentPlaylist()">Đang phát</a>
+                        <a class="button icon-left ion-document-text activated" id="player_content_text_button" ng-click="player.showContentText()">Nội dung</a>
+                    </div>
+                    <button class="button button-clear" ng-click="player.closePlayerContent()">Đóng</button>
+                </ion-header-bar>
+                <ion-content id="player_content_playlist">
+                    <ion-list>
+                        <ion-item class="item-avatar" ng-repeat="audio in player.playlist">
+                            <img ng-src="{{audio.thumbnail}}">
+                            <h2>{{audio.title}}</h2>
+                            <p>{{audio.excerpt}}</p>
+                        </ion-item>
+                    </ion-list>
+                </ion-content>
+                <ion-content id="player_content_text">
+                    <p id="" ng-bind-html="player.playlist[player.indexing].content"></p>
+                </ion-content>
+                <ion-footer-bar class="bar bar-footer">
+                    <div class="player_seek_timing">
+                        <div class="player_seek_wrapper">
+                           <div class="player_seek_buffered"></div>
+                           <div class="player_seek_played"></div>
+                        </div>
+                        <div class="player_timing"><span class="player_timing_timer">--:--</span> / <span class="player_timing_duration">--:--</span></div>
+                    </div>
+                </ion-footer-bar>
+            </div>
+        </div>        
+        <!-- / Media Player -->
+        
+    </ion-side-menu-content>
+
+    <ion-side-menu side="left">        
+        <ion-header-bar class="bar-balanced item-input-inset" style="padding: 5px;">
+            <a class="button button-icon icon ion-home" href="#/app/home" menu-close></a>         
+            <label class="item-input-wrapper" style="border-radius: 100px;">
+                <i class="icon ion-ios-search placeholder-icon"></i>
+                <input type="search" placeholder="Tìm chương trình ..." ng-model="categoryFilter">
+            </label>
+            <button class="button button-clear" ng-click="categoryFilter=''">Xóa</button>           
+        </ion-header-bar>        
+        <ion-content>
+            <ion-list>               
+                <ion-item class="item-positive item-icon-right" menu-close href="#/app/audio">
+                    CHƯƠNG TRÌNH RADIO <i class="icon ion-ios-arrow-forward"></i>
+                </ion-item>
+                <ion-item class="item item-icon-left"  menu-close href="#/app/home" ng-repeat="category in audio.category | filter:categoryFilter">
+                    <i class="icon {{category.slug}}"></i>
+                    {{category.title}}
+                    <span class="badge badge-stable">{{category.count}}</span>
+                </ion-item>
+                <ion-item class="item-assertive item-icon-right" menu-close href="#/app/news">
+                    CHUYÊN MỤC TIN TỨC <i class="icon ion-ios-arrow-forward"></i>
+                </ion-item>
+                <ion-item class="item"  menu-close href="#/app/home" ng-repeat="category in news.category | filter:categoryFilter">
+                    {{category.title}}
+                    <span class="badge badge-stable">{{category.count}}</span>
+                </ion-item>
+            </ion-list>
+        </ion-content>
+    </ion-side-menu>
+    
+    
+    
+    <ion-side-menu side="right">
+<!--
+        <ion-header-bar class="bar-balanced" align-title="left">
+            <div class="h1 title"></div>
+        </ion-header-bar>
+-->
+        <ion-content class="no-header">
+            <ion-list>                                
+                <ion-item menu-close class="item-icon-left" href="#/app/search">
+                    <i class="icon ion-ios-search-strong"></i> Tìm kiếm
+                </ion-item>
+                <ion-item menu-close class="item-icon-left" href="#/app/bookmark">
+                    <i class="icon ion-bookmark"></i> Đánh dấu
+                </ion-item> 
+                <ion-item menu-close class="item-icon-left" href="#/app/playlist">
+                    <i class="icon ion-ios-list"></i> Playlist
+                </ion-item>              
+                <ion-item menu-close class="item-icon-left" href="#/app/history">
+                    <i class="icon ion-reply-all"></i> Lịch sử
+                </ion-item>
+                
+                <ion-item menu-close class="item-icon-left" href="#/app/help">
+                    <i class="icon ion-ios-help"></i> Trợ giúp
+                </ion-item>
+                <ion-item menu-close class="item-icon-left" href="#/app/setting">
+                    <i class="icon ion-ios-gear"></i> Thiết lập
+                </ion-item>
+                
+                
+               
+                <ion-item menu-close href="#/app/front">
+                    Front
+                </ion-item>
+                <ion-item menu-close href="#/app/home">
+                    Home
+                </ion-item>
+                <ion-item menu-close href="#/app/test">
+                    Test
+                </ion-item>
+                
+                
+            </ion-list>
+        </ion-content>
+    </ion-side-menu>
+    
+    
+</ion-side-menus>

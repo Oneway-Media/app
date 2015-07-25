@@ -1,0 +1,27 @@
+<ion-view view-title="Categories">
+    <ion-header-bar class="bar-positive">
+        <button class="button button-icon button-clear ion-ios-arrow-back" ng-click="nav.goBack()"></button>
+        <h1 class="title">Chương trình Radio</h1>
+    </ion-header-bar>
+    <ion-content>
+        <div class="grid-row">
+            <div class="col-xs-12 col-sm-1 col-md-2 col-lg-2"></div>
+            <div class="col-xs-12 col-sm-10 col-md-8 col-lg-8">
+                <div class="card">
+                    <label class="item item-input">
+                        <input type="search" placeholder="Tìm kiếm ..." ng-model="audioCategoryFilter">
+                    </label>
+                </div>
+
+                <div class="card">
+                    <ion-item class="item item-icon-left"  menu-close href="#/app/home" ng-repeat="category in audio.category | filter:audioCategoryFilter">
+                        <i class="icon {{category.slug}}"></i>
+                        {{category.title}}
+                        <span class="badge badge-stable">{{category.count}}</span>
+                    </ion-item>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-1 col-md-2 col-lg-2"></div>
+        </div>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,25 @@
+<ion-modal-view>
+    <ion-header-bar class="bar-stable item-input-inset" align-title="left">
+        <button class="button button-light button-outline button-assertive" ng-click="audio.playThis(audio.view.self.id)" ng-class="{'active': player.playlist[player.indexing].id == audio.view.self.id}">{{player.playlist[player.indexing].id == audio.view.self.id ? 'ĐANG PHÁT': 'NGHE'}}</button>
+        
+        <button class="button button-stable icon ion-share" ng-click="audio.playThisRaw(audio.view.self.id)" style="border:none;">Trình phát mặc định</button>
+        
+        <h1 class="title">&nbsp;</h1>
+        <button class="button button-clear" ng-click="audio.closeViewThisModal()">Đóng</button>
+    </ion-header-bar>
+    <ion-content>
+        <div ng-hide="audio.view.ready" style="text-align:center;margin-top:30px;">Đang tải ...</div>
+        <article ng-show="audio.view.ready" class="text_content">
+            <h1>{{audio.view.self.title}}</h1>
+            <div ng-bind-html="audio.view.self.content"></div>        
+        </article>
+        
+    </ion-content>
+    
+    <div class="bar bar-footer">        
+        <button class="button button-stable icon ion-android-add"></button>
+        <h1 class="title" ng-show="audio.view.ready" style="font-size: 1em;font-weight: 400;">{{audio.view.self.date}}</h1>
+        <button class="button button-stable icon ion-android-share-alt" ng-click="audio.shareThis(audio.view.self.id)"></button>
+    </div>
+    
+</ion-modal-view>

@@ -1,0 +1,28 @@
+<ion-view view-title="Help">
+    <ion-header-bar class="bar-balanced">
+        <h1 class="title">Help</h1>
+        <a class="button button-icon button-clear ion-home" href="#/app/home"></a>
+    </ion-header-bar>
+    <ion-content>
+        <ion-list>
+                       
+            <!-- CONTACT -->
+            <ion-item class="item-divider">Liên hệ</ion-item>
+            <ion-item class="item-icon-left" href="mailto:onewaymediavn@gmail.com">
+                <i class="icon ion-ios-email"></i> Gửi Email
+            </ion-item>
+            <ion-item class="item-icon-left" href="http://oneway.vn/">
+                <i class="icon ion-android-globe"></i> Oneway.vn
+            </ion-item>
+            <ion-item class="item-icon-left" ng-click="openRecordPopup()">
+                <i class="icon ion-android-microphone"></i> Thu âm
+            </ion-item>
+            
+            <!-- ABOUT -->
+            <ion-item class="item-divider">Phiên bản: V3.0.0</ion-item>
+            <ion-item class="item-icon-left" ng-click="openAboutModal()">
+                <i class="icon ion-ios-information"></i> Giới thiệu
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>

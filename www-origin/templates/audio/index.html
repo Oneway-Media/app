@@ -1,0 +1,223 @@
+<ion-view view-title="Audio">
+  
+    
+    <!--    Searching Panel    -->
+    <div id="search_panel">
+        <div id="search_content">
+            <ion-header-bar align-title="left" class="bar-stable">
+                <h1 class="title">Kết quả tìm kiếm:</h1>
+                <button class="button button-icon button-clear" ng-click="search.closeSearchPanel()">Đóng</button>
+            </ion-header-bar>
+            <ion-content>
+                <div class="grid-row">
+                    <div class="col-xs-12 col-sm-1 col-md-2 col-lg-2"></div>
+                    <div class="col-xs-12 col-sm-10 col-md-8 col-lg-8">                        
+                        <ion-list>
+                            <ion-item>
+                                aaa
+                            </ion-item>
+                        </ion-list>
+                    </div>
+                    <div class="col-xs-12 col-sm-1 col-md-2 col-lg-2"></div>
+                </div>
+            </ion-content>
+<!--            <ion-footer-bar class="bar bar-footer"></ion-footer-bar>-->
+        </div>
+    </div>
+   
+    
+    <ion-header-bar class="bar-positive item-input-inset" style="padding: 5px;z-index: 999;">
+        <button class="button button-icon button-clear ion-navicon" menu-toggle="left">&nbsp;</button>        
+        <label class="item-input-wrapper" style="border-radius: 100px;">
+            <i class="icon ion-ios-search placeholder-icon"></i>
+            <input type="search" placeholder="Tìm kiếm ..." ng-model="search.audioSearchString" ng-focus="search.openSearchPanel()" ng-change="search.searchInputChange(search.audioSearchString)">
+        </label>
+        <button class="button button-clear" ng-click="search.audioSearchString=''">Xóa</button>           
+    </ion-header-bar>
+    
+    
+    
+    <ion-content class="has-header">       
+        <div class="grid-container-fluid">
+            <div class="grid-row">
+               
+                <!--       Search n Radio Online         -->
+                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">                    
+                    <div class="card">                        
+                        <a class="item item-icon-right" href="#/app/audio/categories">
+                            CÁC CHƯƠNG TRÌNH RADIO
+                            <i class="icon ion-ios-arrow-forward"></i>
+                        </a>                        
+                        <a class="item item-icon-left item-icon-right" href="#/app/audio/surprise">
+                            <i class="icon ion-wand"></i>
+                            TRỢ LÝ
+                            <i class="icon ion-ios-arrow-forward"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                
+                
+                
+                
+                <!--       Suggestion         -->
+                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                    
+                    <div class="card">
+
+                        <div class="item">
+                            NGHE GÌ HÔM NAY?
+                        </div>
+
+                        <a class="item item-thumbnail-left" href="#">
+                            <img src="http://oneway.vn/wp-content/uploads/2014/12/oneway.vn_dscb-300x300.jpg">
+                            <h2>Pretty Hate Machine</h2>
+                            <p>Nine Inch Nails</p>
+                            <div class="general_extra_buttons">
+                                <button class="button button-light icon ion-ios-play"></button>
+                                <button class="button button-light icon ion-android-add"></button>
+                                <button class="button button-light icon ion-android-share-alt"></button>
+                            </div>
+                        </a>
+
+                        <a class="item item-thumbnail-left" href="#">
+                            <img src="http://oneway.vn/wp-content/uploads/2014/12/oneway.vn_dscb-300x300.jpg">
+                            <h2>Pretty Hate Machine</h2>
+                            <p>Nine Inch Nails</p>
+                        </a>
+
+                        <a class="item item-thumbnail-left" href="#">
+                            <img src="http://oneway.vn/wp-content/uploads/2014/12/oneway.vn_dscb-300x300.jpg">
+                            <h2>Pretty Hate Machine</h2>
+                            <p>Nine Inch Nails</p>
+                        </a>
+
+                        <a class="item item-thumbnail-left" href="#">
+                            <img src="http://oneway.vn/wp-content/uploads/2014/12/oneway.vn_dscb-300x300.jpg">
+                            <h2>Pretty Hate Machine</h2>
+                            <p>Nine Inch Nails</p>
+                        </a>
+
+                        <a class="item item-thumbnail-left" href="#">
+                            <img src="http://oneway.vn/wp-content/uploads/2014/12/oneway.vn_dscb-300x300.jpg">
+                            <h2>Pretty Hate Machine</h2>
+                            <p>Nine Inch Nails</p>
+                        </a>
+                        
+
+                        <div class="item tabs tabs-secondary tabs-icon-top">
+                            <a class="tab-item assertive" href="#">
+                                <i class="icon ion-ios-musical-notes"></i>
+                                NGHE TẤT CẢ
+                            </a>
+                            <a class="tab-item" href="#">
+                                <i class="icon ion-plus-round"></i>
+                                TẠO DANH SÁCH
+                            </a>
+                            <a class="tab-item" href="#">
+                                <i class="icon ion-wand"></i>
+                                TRỢ LÝ
+                            </a>
+                        </div>
+
+                    </div>
+                    
+                </div>
+                
+                
+                <!--       Newest         -->
+                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                    
+                    <div class="list card">
+
+                        <div class="item">
+                            AUDIO MỚI NHẤT <a class="item-note" href="#/app/audio">AUDIO</a>
+                        </div>
+
+                        <a class="item item-thumbnail-left" href="#">
+                            <img src="http://oneway.vn/wp-content/uploads/2014/12/oneway.vn_dscb-300x300.jpg">
+                            <h2>Pretty Hate Machine</h2>
+                            <p>Nine Inch Nails</p>
+                        </a>
+
+                        <a class="item item-thumbnail-left" href="#">
+                            <img src="http://oneway.vn/wp-content/uploads/2014/12/oneway.vn_dscb-300x300.jpg">
+                            <h2>Pretty Hate Machine</h2>
+                            <p>Nine Inch Nails</p>
+                        </a>
+
+                        <a class="item item-thumbnail-left" href="#">
+                            <img src="http://oneway.vn/wp-content/uploads/2014/12/oneway.vn_dscb-300x300.jpg">
+                            <h2>Pretty Hate Machine</h2>
+                            <p>Nine Inch Nails</p>
+                        </a>
+
+                        <a class="item item-thumbnail-left" href="#">
+                            <img src="http://oneway.vn/wp-content/uploads/2014/12/oneway.vn_dscb-300x300.jpg">
+                            <h2>Pretty Hate Machine</h2>
+                            <p>Nine Inch Nails</p>
+                        </a>
+
+                        <a class="item item-thumbnail-left" href="#">
+                            <img src="http://oneway.vn/wp-content/uploads/2014/12/oneway.vn_dscb-300x300.jpg">
+                            <h2>Pretty Hate Machine</h2>
+                            <p>Nine Inch Nails</p>
+                        </a>
+                        
+                        <a class="item item-icon-right" href="#/app/audio">
+                            XEM THÊM
+                            <i class="icon ion-ios-arrow-forward"></i>
+                        </a>
+                        
+
+                    </div>
+                    
+                    <div class="list card">
+
+                        <div class="item">
+                            TIN TỨC MỚI NHẤT <a class="item-note" href="#/app/news">TIN TỨC</a>
+                        </div>
+
+                        <a class="item item-thumbnail-left" href="#">
+                            <img src="http://oneway.vn/wp-content/uploads/2014/12/oneway.vn_dscb-300x300.jpg">
+                            <h2>Pretty Hate Machine</h2>
+                            <p>Nine Inch Nails</p>
+                        </a>
+
+                        <a class="item item-thumbnail-left" href="#">
+                            <img src="http://oneway.vn/wp-content/uploads/2014/12/oneway.vn_dscb-300x300.jpg">
+                            <h2>Pretty Hate Machine</h2>
+                            <p>Nine Inch Nails</p>
+                        </a>
+
+                        <a class="item item-thumbnail-left" href="#">
+                            <img src="http://oneway.vn/wp-content/uploads/2014/12/oneway.vn_dscb-300x300.jpg">
+                            <h2>Pretty Hate Machine</h2>
+                            <p>Nine Inch Nails</p>
+                        </a>
+
+                        <a class="item item-thumbnail-left" href="#">
+                            <img src="http://oneway.vn/wp-content/uploads/2014/12/oneway.vn_dscb-300x300.jpg">
+                            <h2>Pretty Hate Machine</h2>
+                            <p>Nine Inch Nails</p>
+                        </a>
+
+                        <a class="item item-thumbnail-left" href="#">
+                            <img src="http://oneway.vn/wp-content/uploads/2014/12/oneway.vn_dscb-300x300.jpg">
+                            <h2>Pretty Hate Machine</h2>
+                            <p>Nine Inch Nails</p>
+                        </a>
+                        
+                        <a class="item item-icon-right" href="#/app/news">
+                            XEM THÊM
+                            <i class="icon ion-ios-arrow-forward"></i>
+                        </a>
+
+                    </div>
+                    
+                </div>
+            </div>           
+        </div>
+    </ion-content>
+    
+</ion-view>

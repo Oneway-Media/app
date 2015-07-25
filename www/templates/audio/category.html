@@ -1,0 +1,63 @@
+<ion-view view-title="Audio Category">
+    <ion-header-bar class="bar-balanced item-input-inset">
+        <button class="button button-icon button-clear ion-ios-arrow-back" ng-click="nav.goBack()">&nbsp;</button>
+        <h1 class="title">{{category.title}}</h1>
+        <button class="button button-clear icon ion-ios-search" ng-click="search.openSearchPanel()"></button>
+    </ion-header-bar>
+    <ion-content scroll-watch>
+        <ion-refresher
+        pulling-text="Pull to refresh ..."
+        on-refresh="audio.load(category.slug, true)">
+        </ion-refresher>
+        <div class="grid-row">
+           
+            <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2"></div>
+            
+            <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+                
+                <div class="card collection_within">
+
+                    <ion-list>
+                        <ion-item class="item-divider">{{category.title}}
+                            <span class="badge badge-balanced">{{category.count}}</span>
+                        </ion-item>
+                        <a class="item item-thumbnail-left wrap_title" collection-repeat="item in audio[category.slug]" ng-click="audio.playThis(item.id)" ng-class="{'player_playing': player.playlist[player.indexing].id == item.id}">
+                            <img ng-src="{{item.thumbnail}}">
+                            <h2>{{item.title | clip}}</h2>
+                            <p>{{item.date | date}}</p>
+                            <div class="general_extra_buttons">
+                                <button class="button button-light icon ion-document" ng-click="audio.openViewThisModal(item.id);$event.stopPropagation();"></button>
+<!--
+                                <button class="button button-light icon ion-android-add" ng-click="$event.stopPropagation();"></button>
+                                <button class="button button-light icon ion-android-share-alt" ng-click="audio.shareThis(item.id);$event.stopPropagation();"></button>
+-->
+                                <button class="button button-light icon ion-android-more-vertical" ng-click="audio.moreActions(item.id);$event.stopPropagation();"></button>
+                            </div>
+                        </a>
+                    </ion-list>
+                </div>
+                
+
+            </div>
+            
+            <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2"></div>
+            
+        </div>
+        
+        <ion-infinite-scroll
+        ng-if="audio.canBeMore(category.slug)"
+        on-infinite="audio.loadMore(category.slug)"
+        distance="1%"
+        immediate-check="false">
+        </ion-infinite-scroll>
+        
+    </ion-content>
+        
+        
+    <button class="data_tracker" ng-click="audio.resetList(category.slug)">
+       <strong>{{category.loaded}}</strong> / {{category.count}}
+    </button>
+        
+    <button id="scroll-top-button" class="button button-stable icon ion-android-arrow-up" ng-click="nav.toTop()"></button>
+    
+</ion-view>

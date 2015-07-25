@@ -8,6 +8,8 @@
     
    
     <!-- compiled css output -->
+    <link href="lib/flexboxgrid/flexboxgrid.min.css" rel="stylesheet">
+    <link href="lib/loading-bar/loading-bar.min.css" rel="stylesheet">
     <link href="css/ionic.app.css" rel="stylesheet">
     
     <!--  jQuery  -->
@@ -19,14 +21,29 @@
     <!-- cordova script (this will be a 404 during development) -->
     <script src="cordova.js"></script>
     
+    <!--  Lodash  -->
+    <script src="lib/lodash/lodash-3.10.0.min.js"></script>
+        
+    <!--  Loading bar  -->
+    <script src="lib/loading-bar/loading-bar.min.js"></script>
+            
     <!--  Angular Bootstrap  -->    
     
     <!--  Ripple Effect  -->
 
     <!-- your app's js -->
-    <script src="js/app.js"></script>
-    <script src="js/controllers.js"></script>
+    <script src="js/app.js"></script>    
+    <script src="js/inits.js"></script>
+    <script src="js/controllers.js"></script>  
+    <!-- Services (will be concatenated when in production) -->
     <script src="js/services.js"></script>
+    <script src="js/service-audio.js"></script>
+    <script src="js/service-news.js"></script>
+    <script src="js/service-player.js"></script>
+    <script src="js/service-plugin.js"></script>
+    <script src="js/service-helper.js"></script>    
+    <script src="js/service-setting.js"></script>
+    <script src="js/search.js"></script>
 </head>
 
 <body ng-app="app">
