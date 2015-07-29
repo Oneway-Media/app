@@ -70,9 +70,10 @@ angular.module('service.player', [])
                 /* Methods */
                 play: function (sound) {
                     
-                    if(this.playlist[this.indexing].id == sound[0].id) {
-                        return false;
-                    }
+                    // Not replay current file
+                    //if(this.playlist[this.indexing].id == sound[0].id) {
+                        //return false;
+                    //}
                     
                     this.audio.stop().setTime(0).set('src', sound[0].src).play();        
                     this.audio.bind('ended', function (e) {

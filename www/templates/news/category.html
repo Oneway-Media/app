@@ -1,12 +1,61 @@
 <ion-view view-title="News Category">
-    <ion-header-bar class="bar-balanced item-input-inset">
+   
+    <ion-header-bar class="bar-balanced">
         <button class="button button-icon button-clear ion-ios-arrow-back" ng-click="nav.goBack()">&nbsp;</button>
-        <h1 class="title">News</h1>
-        <button class="button button-clear icon ion-ios-search" ng-click="search.openSearchPanel()"></button>
+        <h1 class="title" style="padding-top:5px;">
+            <button class="button button-clear" ng-click="news.resetList(category.slug)" ng-show="category.loaded">
+               <strong>{{category.loaded}}</strong> / {{category.count}}
+            </button>
+        </h1>
+        <button class="button button-clear icon ion-ios-search" ng-click="search.openSearchPanel('news',category.slug)"></button>
     </ion-header-bar>
-    <ion-content>
-        <h1>News</h1>        
-    </ion-content>
     
+    <ion-content scroll-watch>
+        <ion-refresher
+        pulling-text="Pull to refresh ..."
+        on-refresh="news.load(category.slug, true)">
+        </ion-refresher>
+        <div class="grid-row">
+           
+            <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2"></div>
+            
+            <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+                
+                <div class="card collection_within">
+
+                    <ion-list>
+                        <ion-item class="item-divider">{{category.title}}
+                            <span class="badge badge-balanced">{{category.count}}</span>
+                        </ion-item>
+                        <a class="item item-thumbnail-left wrap_title" collection-repeat="item in news[category.slug]" ng-click="news.openViewThisModal(item.id)" ng-class="{'player_playing': player.playlist[player.indexing].id == item.id}">
+                            <img ng-src="{{item.thumbnail}}">
+                            <h2>{{item.title | clipText}}</h2>
+                            <p>{{item.date | toDate}}</p>
+                            <span class="item_checked" ng-show="history.news[item.id]"></span>
+                            <div class="item_extra_buttons">
+                                <button class="button button-light icon ion-android-more-horizontal" ng-click="news.moreActions(item.id);$event.stopPropagation();"></button>
+                            </div>
+                        </a>
+                    </ion-list>
+                    
+                </div>
+                
+
+            </div>
+            
+            <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2"></div>
+            
+        </div>
+        
+        <ion-infinite-scroll
+        ng-if="news.canBeMore(category.slug)"
+        on-infinite="news.loadMore(category.slug)"
+        distance="1%"
+        immediate-check="false">
+        </ion-infinite-scroll>
+        
+    </ion-content>
+        
+    <button id="scroll-top-button" class="button button-balanced icon ion-android-arrow-up" ng-click="nav.toTop()"></button>
     
 </ion-view>

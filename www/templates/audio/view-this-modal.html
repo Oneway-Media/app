@@ -1,14 +1,17 @@
 <ion-modal-view>
     <ion-header-bar class="bar-stable item-input-inset" align-title="left">
-        <button class="button button-light button-outline button-assertive" ng-click="audio.playThis(audio.view.self.id)" ng-class="{'active': player.playlist[player.indexing].id == audio.view.self.id}">{{player.playlist[player.indexing].id == audio.view.self.id ? 'ĐANG PHÁT': 'NGHE'}}</button>
+        <button class="button button-outline button-assertive" ng-click="audio.playThis(audio.view.self.id)" ng-show="audio.view.ready">{{player.playlist[player.indexing].id == audio.view.self.id ? 'NGHE LẠI': 'NGHE (' + (audio.view.self.duration | numberToMinute) + ')' }}</button>        
+<!--        ng-class="{'active': player.playlist[player.indexing].id == audio.view.self.id}"-->
         
-        <button class="button button-stable icon ion-share" ng-click="audio.playThisRaw(audio.view.self.id)" style="border:none;">Trình phát mặc định</button>
+        <button class="button button-stable" style="border:none;margin-left:5px;" ng-show="audio.view.ready" disabled>Đã nghe <strong>{{ history.audio[audio.view.self.id].viewed ? history.audio[audio.view.self.id].viewed: 0}}</strong> lần</button>
         
         <h1 class="title">&nbsp;</h1>
         <button class="button button-clear" ng-click="audio.closeViewThisModal()">Đóng</button>
     </ion-header-bar>
-    <ion-content>
-        <div ng-hide="audio.view.ready" style="text-align:center;margin-top:30px;">Đang tải ...</div>
+    <ion-content class="has-header has-footer">
+        <div ng-hide="audio.view.ready" style="text-align:center;margin-top:30px;">
+            <ion-spinner></ion-spinner>
+        </div>
         <article ng-show="audio.view.ready" class="text_content">
             <h1>{{audio.view.self.title}}</h1>
             <div ng-bind-html="audio.view.self.content"></div>        
@@ -17,9 +20,9 @@
     </ion-content>
     
     <div class="bar bar-footer">        
-        <button class="button button-stable icon ion-android-add"></button>
+<!--        <button class="button button-stable icon ion-android-add"></button>-->
         <h1 class="title" ng-show="audio.view.ready" style="font-size: 1em;font-weight: 400;">{{audio.view.self.date}}</h1>
-        <button class="button button-stable icon ion-android-share-alt" ng-click="audio.shareThis(audio.view.self.id)"></button>
+        <button class="button button-stable button-clear ion-more" ng-click="audio.moreActions(audio.view.self.id)" style="padding-left: 10px; padding-right: 10px;"></button>
     </div>
     
 </ion-modal-view>

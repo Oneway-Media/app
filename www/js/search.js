@@ -23,10 +23,16 @@ angular.module('service.search', [])
 
         searchResult: [],
 
-        openSearchPanel: function () {
+        openSearchPanel: function (type, category) {
+            
+            $rootScope.search.criteria.type = type;
+            $rootScope.search.criteria.category = category;
+            
             $('#search_panel').fadeIn(300, function () {
                 $(this).find('input')[0].focus();
             });
+            
+            console.log($rootScope.search.criteria);
         },
 
         closeSearchPanel: function () {
@@ -44,6 +50,9 @@ angular.module('service.search', [])
         searchInputChange: function (string) {
 
             var search = $rootScope.search;
+            
+            //console.log(search.criteria);
+                        
 
             string = string.replace(/\//g, ' '); // Replace /
 
@@ -62,8 +71,24 @@ angular.module('service.search', [])
 
                     if(search.criteria.type === 'news' && search.criteria.category === null) {
                         console.log('Search all news!');
+                        
+                        newsService.search(string, function (data) {
+                            search.searchResult = data;
+                            search.loading = false;
+                        }, false, function () {
+                            search.loading = false;
+                        });
+                        
                     } else if(search.criteria.type === 'news' && search.criteria.category !== null) {
                         console.log('Search news by category!');
+                        
+                        newsService.search(string, function (data) {
+                            search.searchResult = data;
+                            search.loading = false;
+                        }, search.criteria.category, function () {
+                            search.loading = false;
+                        });
+                        
                     } else if(search.criteria.type === 'audio' && search.criteria.category === null) {
 
                         audioService.search(string, function (data) {
@@ -91,7 +116,10 @@ angular.module('service.search', [])
         },
 
         view: function (id) {
+            
             var search = $rootScope.search;
+            console.log(search.criteria.type);
+            
             if(search.criteria.type === 'audio') {
                 $rootScope.audio.openViewThisModal(id);
             } else if(search.criteria.type === 'news') {
@@ -99,6 +127,7 @@ angular.module('service.search', [])
             } else {
                 return false;
             }
+            
         },
         
         loading: false,

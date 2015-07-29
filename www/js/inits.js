@@ -68,6 +68,26 @@ angular.module('app.inits', ['angular-loading-bar'])
             }
         }
     })
+
+    .state('app.history', {
+        url: "/history",
+        views: {
+            'menuContent': {
+                templateUrl: "templates/history.html",
+                controller: 'HistoryCtrl'
+            }
+        }
+    })
+
+    .state('app.bookmark', {
+        url: "/bookmark",
+        views: {
+            'menuContent': {
+                templateUrl: "templates/bookmark.html",
+                controller: 'BookmarkCtrl'
+            }
+        }
+    })
     
 
     

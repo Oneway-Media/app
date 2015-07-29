@@ -1,63 +1,107 @@
-<ion-view view-title="News">
+<ion-view view-title="Oneway Tin Tức">
     
     
-    <ion-header-bar class="bar-assertive item-input-inset" style="padding: 5px;z-index: 999;">        
+    <ion-header-bar class="bar-balanced item-input-inset" style="padding: 5px;z-index: 999;">        
         <button class="button button-icon button-clear ion-navicon" menu-toggle="left"></button> 
-        <h1 class="title">Tin Tức</h1>
-        <button class="button button-clear icon ion-ios-search" ng-click="search.openSearchPanel()"></button>
-    </ion-header-bar>
+        <h1 class="title">Oneway Tin Tức</h1>
+        <button class="button button-clear icon ion-ios-search" ng-click="search.openSearchPanel('news',null)"></button>
+    </ion-header-bar>    
     
     
     
-    <ion-content class="has-header">       
-        <div class="grid-container-fluid">
-            <div class="grid-row">
-                               
-                <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2"></div>                
-                
-                <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
-                    
-                    <!-- Actions -->
-                    <div class="list card">
-                        <div class="item item-divider">Thao tác: </div>
-                        <a class="item item-icon-right" href="#/app/news/category/tat-ca">
-                            tat-ca
-                        </a>
-                        <a class="item item-icon-right" href="#/app/news/category/trong-nuoc">
-                            trong-nuoc
-                        </a>
-                    </div> 
-                    
+    <ion-tabs class="tabs-stable tabs-icon-top tabs-top">
+
+        <ion-tab title="Home" icon-on="ion-ios-home" icon-off="ion-ios-home-outline">
+            <ion-content class="has-header has-tabs-top">
+
+                <ion-refresher
+                pulling-text="Pull to refresh ..."
+                on-refresh="news.init()">
+                </ion-refresher>
+
+                <div class="grid-container-fluid"><div class="grid-row"><div class="col-xs-12 col-sm-12 col-md-2 col-lg-2"></div>                
+
+                    <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+                        
+                        <div class="list card" ng-repeat="category in news.categories track by $index">
+                            
+                            <ion-item class="item-stable item-button-right">
+                                <strong>{{category.title}}</strong>
+                                <a class="button button-dark button-clear" href="#/app/news/category/{{category.slug}}">
+                                    <i class="icon ion-ios-more"></i>
+                                </a>
+                            </ion-item>
+
+                            <div class="item item-text-wrap card_colorblock item-balanced" style="background: url({{item.cover ? item.cover: item.thumbnail}})" ng-repeat="item in news.newest[category.slug] track by $index" ng-click="news.openViewThisModal(item.id)" ng-show="$first">
+                                <div class="card_colorblock_text">
+                                    <h1>{{item.title | clipText}}</h1>
+                                    <p>{{item.date | toDate}}</p>
+                                </div>
+                            </div> 
+                                                       
 <!--
-                    <div class="list card">
-                        <a class="item item-text-wrap home_colorblock item-positive">
-                            <h1>Radio Trực tuyến</h1>
-                        </a>
-                        
-                        <div class="item item-divider">Audio đã phát: </div>
-                        
-                        <ion-list>
-                            <a class="item item-thumbnail-left wrap_title" ng-repeat="audio in audio['tat-ca'] | limitTo:10">
-                                <img ng-src="{{audio.thumbnail}}">
-                                <h2>{{audio.title | clip}}</h2>
-                                <p>{{audio.date | date}}</p>
-                                <div class="general_extra_buttons">
-                                    <button class="button button-light icon ion-android-share-alt" ng-click="$event.stopPropagation();"></button>
+                            <div class="item item-text-wrap" ng-click="news.openViewThisModal(1232)">
+                                <h1 style="font-size: 1.5em;">fawfwefwef wfe afe wfe awfe</h1>
+                            </div>
+-->
+                            
+                            <div class="item item-divider"></div>
+                                              
+                            <a class="item item-thumbnail-left wrap_title" ng-repeat="item in news.newest[category.slug] track by $index" ng-click="news.openViewThisModal(item.id)" ng-show="!$first">
+                                <img ng-src="{{item.thumbnail}}">
+                                <h2>{{item.title | clipText}}</h2>
+                                <p>{{item.date | toDate}}</p>
+                                <span class="item_checked" ng-show="history.news[item.id]"></span>
+                                <div class="item_extra_buttons">
+                                    <button class="button button-light icon ion-android-more-horizontal" ng-click="news.moreActions(item.id);$event.stopPropagation();"></button>
                                 </div>
                             </a>
-                        </ion-list>
+                                              
+                            <a class="item item-stable item-icon-right" href="#/app/news/category/{{category.slug}}">
+                                Xem thêm <i class="icon ion-ios-arrow-forward"></i>
+                            </a>
+                                               
+                        </div>
+                        
                     </div>
--->
-                    
-                    
+
+                    <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2"></div></div>           
                 </div>
                 
-                <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2"></div>
-                
-            </div>           
-        </div>
+            </ion-content>
+            
+        </ion-tab>
         
         
-    </ion-content>
+        
+        
+        
+        
+        
+
+        <ion-tab title="Mục tin" icon-on="ion-ios-list" icon-off="ion-ios-list-outline">
+           
+            <ion-content class="has-header has-tabs-top">
+                <div class="list card">
+                    <div class="item item-divider">Mục tin</div>
+                    <a class="item" ng-repeat="category in news.categories track by $index" href="#/app/news/category/{{category.slug}}">
+                        {{category.title}}
+                        <span class="badge badge-stable">{{category.count}}</span>
+                    </a>
+                </div>
+
+                <div class="list card" style="box-shadow:none;">
+                    <ion-item ng-click="" style="text-align:center;color:#b2b2b2;background:none;"></ion-item>
+                </div>
+
+            </ion-content>
+
+        </ion-tab>
+        
+        
+        
+
+    </ion-tabs>
+    
     
 </ion-view>

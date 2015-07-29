@@ -5,7 +5,7 @@
        
         <label class="item-input-wrapper" style="border-radius: 100px;">
             <i class="icon ion-ios-search placeholder-icon"></i>
-            <input type="search" placeholder="Từ khóa không dấu ..." ng-model="search.audioSearchString" ng-focus="search.openSearchPanel()" ng-change="search.searchInputChange(search.audioSearchString)" />
+            <input type="search" placeholder="Từ khóa không dấu ..." ng-model="search.audioSearchString" ng-change="search.searchInputChange(search.audioSearchString)" />
         </label>
         
         
@@ -15,12 +15,12 @@
     <ion-content>
         <ion-list>
             <ion-item style="text-align:center;border:none;" ng-show="search.loading">
-                <ion-spinner icon="ios"></ion-spinner>
+                <ion-spinner></ion-spinner>
             </ion-item>
             <ion-item class="item item-thumbnail-left wrap_title" ng-repeat="item in search.searchResult" ng-click="search.view(item.id)">
                 <img ng-src="{{item.thumbnail}}">
-                <h2>{{item.title | clip}}</h2>
-                <p>{{item.date | date}}</p>
+                <h2>{{item.title | clipText}}</h2>
+                <p>{{item.date | toDate}}</p>
             </ion-item>
         </ion-list>
     </ion-content>

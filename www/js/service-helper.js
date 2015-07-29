@@ -39,7 +39,7 @@ angular.module('service.helper', [])
         },
         
         // SET
-        set: function (key, value) {key
+        set: function (key, value) {
             // Check 
             if(!this.check()) {
                 console.log('No LocalStorage!'); return false;

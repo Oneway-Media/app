@@ -1,0 +1,52 @@
+<ion-view view-title="History">
+    <ion-header-bar class="bar-balanced item-input-inset">
+        <button class="button button-icon button-clear ion-navicon" menu-toggle="left">&nbsp;&nbsp;</button>
+        
+        <label class="item-input-wrapper" style="border-radius: 100px;">
+            <i class="icon ion-ios-search placeholder-icon"></i>
+            <input type="text" placeholder="Lọc lịch sử ..." ng-model="historyFilter" />
+        </label>
+        
+        <button class="button button-stable button-icon button-clear ion-ios-close-empty" ng-click="historyFilter=''"></button>
+            
+    </ion-header-bar>
+    
+    <div class="bar bar-subheader bar-stable">
+        
+        <div class="row no-padding">
+            <div class="col col-75 no-padding" style="padding-right:5px;">
+                <div class="button-bar">
+                    <button class="button button-balanced button-outline" ng-class="{active: currentHistory == 'audio'}" ng-click="switchHistory('audio')">Audio</button>
+                    <button class="button button-balanced button-outline" ng-class="{active: currentHistory == 'news'}" ng-click="switchHistory('news')">Tin tức</button>
+                </div>
+            </div>
+            <div class="col no-padding">
+                <div class="button-bar">                
+                    <button class="button button-assertive button-outline" ng-click="clearHistory()" style="border-radius:2px;">Xóa</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <ion-content id="text_history" class="has-header has-subheader">
+        
+        <div class="grid-row">
+                       
+            <div class="col-xs-12 col-sm-1 col-md-2 col-lg-2"></div>
+            
+            <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+               
+               
+                <ul ng-repeat="group in thisHistory | limitTo:15 track by $index">
+                    <li class="group_caption">{{group.date}}</li>
+                    <li class="group_item" ng-repeat="item in group.data | limitTo:100 | filter:historyFilter track by $index"><a href="" ng-click="viewThisHistory(item.id)">{{item.title}}</a> ({{item.viewed}}) </li>
+                </ul>
+                
+                
+            </div>
+            
+            <div class="col-xs-12 col-sm-1 col-md-2 col-lg-2"></div>
+        </div>
+       
+    </ion-content>
+</ion-view>

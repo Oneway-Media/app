@@ -1,0 +1,23 @@
+<ion-modal-view>
+    <ion-header-bar class="bar-stable item-input-inset" align-title="left">
+        <button class="button button-clear button-balanced" ng-click="news.shareThis(news.view.self.id)" ng-show="news.view.ready">Chia sẻ</button>     
+        <h1 class="title">&nbsp;</h1>
+        <button class="button button-clear" ng-click="news.closeViewThisModal()">Đóng</button>
+    </ion-header-bar>
+    <ion-content class="has-header has-footer">
+        <div ng-hide="news.view.ready" style="text-align:center;margin-top:30px;">
+            <ion-spinner></ion-spinner>
+        </div>
+        <article ng-show="news.view.ready" class="text_content">
+            <h1>{{news.view.self.title}}</h1>
+            <div ng-bind-html="news.view.self.content"></div>        
+        </article>
+        
+    </ion-content>
+    
+    <div class="bar bar-footer">
+        <h1 class="title" ng-show="news.view.ready" style="font-size: 1em;font-weight: 400;">{{news.view.self.date}}</h1>
+        <button class="button button-stable button-clear ion-more" ng-click="news.moreActions(news.view.self.id)" style="padding-left: 10px; padding-right: 10px;"></button>
+    </div>
+    
+</ion-modal-view>

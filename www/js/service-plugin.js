@@ -9,6 +9,7 @@ angular.module('service.plugin', [])
                 window.plugins.socialsharing.share(input.content, input.subject, input.image, input.link);
             } else {
                 $ionicPopup.alert({
+                    okType: 'button-balanced',
                     title: 'Lỗi!',
                     template: 'Không thể sử dụng Chia sẻ!'
                 });
@@ -29,6 +30,7 @@ angular.module('service.plugin', [])
                 );
             } else {
                 $ionicPopup.alert({
+                    okType: 'button-balanced',
                     title: 'Lỗi!',
                     template: 'Không thể sử dụng Email!'
                 });
@@ -66,6 +68,7 @@ angular.module('service.plugin', [])
         offline: function () {
             
             $ionicPopup.alert({
+                okType: 'button-balanced',
                 title: 'Không có internet!',
                 template: 'Vui lòng kiểm tra kết nối internet và thử lại sau!'
             });
@@ -81,6 +84,7 @@ angular.module('service.plugin', [])
                 window.plugins.streamingMedia.playAudio(url, options);               
             } else {
                 $ionicPopup.alert({
+                    okType: 'button-balanced',
                     title: 'Lỗi!',
                     template: 'Không thể sử dụng Trình phát mặc định!'
                 });

@@ -4,12 +4,46 @@
         <h1 class="title">Thiết lập</h1>
     </ion-header-bar>
     <ion-content>
-        <ion-list>
             <!-- SETTING -->
-            <ion-item class="item-divider">Khác</ion-item>    
+            <ion-list class="list">            
+                <ion-item class="item-divider">Radio Trực tuyến</ion-item> 
+
+                <ion-item class="item item-toggle">
+                    Tự động phát Radio
+                    <label class="toggle toggle-balanced">
+                        <input type="checkbox" ng-model="settings.radioAutoplay" ng-change="setSettings('radioAutoplay', settings.radioAutoplay)">
+                        <div class="track">
+                            <div class="handle"></div>
+                        </div>
+                    </label>
+                </ion-item>
+            </ion-list>
+           
+        <ion-list>
+            <ion-item class="item-divider item-toggle">Chào Mừng
+                <label class="toggle toggle-stable toggle-small-custom">
+                    <input type="checkbox" ng-model="settings.showWelcome" ng-change="setSettings('showWelcome', settings.showWelcome)">
+                    <div class="track">
+                        <div class="handle"></div>
+                    </div>
+                </label>
+            </ion-item>
+            
+<!--
+            <ion-item class="item item-toggle">
+                Mở lần tới
+                <label class="toggle toggle-stable">
+                    <input type="checkbox" ng-model="settings.showWelcome" ng-change="setSettings('showWelcome', settings.showWelcome)">
+                    <div class="track">
+                        <div class="handle"></div>
+                    </div>
+                </label>
+            </ion-item>
+-->
             <ion-item ng-click="settings.openWelcomeModal()">
-                Cửa sổ Chào mừng!
+                Mở cửa sổ Chào mừng!
             </ion-item>
         </ion-list>
+        
     </ion-content>
 </ion-view>

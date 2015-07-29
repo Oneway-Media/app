@@ -47,8 +47,8 @@
             <div id="player_content_content">
                 <ion-header-bar align-title="left" class="bar-stable">
                     <div class="button-bar">
-                        <a class="button button-outline button-balanced icon-left ion-radio-waves" id="player_content_playlist_button" ng-click="player.showContentPlaylist()">Playlist</a>
-                        <a class="button  button-outline button-balanced icon-left ion-document-text activated" id="player_content_text_button" ng-click="player.showContentText()">Nội dung</a>
+                        <a class="button button-outline button-balanced" id="player_content_playlist_button" ng-click="player.showContentPlaylist()">Playlist</a>
+                        <a class="button  button-outline button-balanced activated" id="player_content_text_button" ng-click="player.showContentText()">Nội dung</a>
                     </div>
                     <button class="button button-clear" ng-click="player.closePlayerContent()">Đóng</button>
                 </ion-header-bar>
@@ -80,15 +80,11 @@
     </ion-side-menu-content>
 
     <ion-side-menu side="left"> <!-- expose-aside-when="large" -->        
-        <ion-header-bar class="bar-balanced">
-            <h1 class="title">&nbsp;</h1>         
-            <a class="button button-clear icon-left ion-home" menu-close href="#/app/home"></a>            
-<!--
+        <ion-header-bar class="bar-balanced" align-title="center">
             <div class="button-bar">
-                <a class="button button-positive" menu-close href="#/app/audio">RADIO</a>
-                <a class="button button-assertive" menu-close href="#/app/news">TIN TỨC</a>
+                <a style="color:#FFF;border-color:#FFF;" class="button button-balanced icon-right ion-ios-musical-notes" menu-close href="#/app/audio">RADIO</a>
+                <a style="color:#FFF;border-color:#FFF;" class="button button-balanced icon-right ion-document-text" menu-close href="#/app/news">TIN TỨC</a>
             </div>        
--->
         </ion-header-bar>
         <!--<div class="bar bar-subheader bar-balanced" id="sidemenu_sections">
             <div class="list">
@@ -100,32 +96,48 @@
                 </a>
             </div>
         </div> -->      
-        <ion-content>
-            <ion-list>                
-<!--                <ion-item class="item-divider"></ion-item>-->
+        <ion-content class="has-header">
+            <ion-list>
                
-                <ion-item class="item-divider">
-                    ONEWAY RADIO
+<!--
+                <ion-item class="item-stable item-icon-left item-icon-right" menu-close href="#/app/audio">
+                    <i class="icon ion-ios-musical-notes"></i>ONEWAY RADIO <i class="icon ion-ios-arrow-right"></i>
                 </ion-item>
+-->
+                <ion-item class="item-divider">Chương trình Radio</ion-item>
                 <a class="item item-icon-left" ng-repeat="category in audio.categories track by $index" menu-close href="#/app/audio/category/{{category.slug}}">
                     <i class="icon {{category.slug}}"></i>
                     {{category.title}}
-<!--                    <span class="badge badge-stable">{{category.count}}</span>-->
                 </a>
-                <ion-item class="item-divider">
-                    TIN TỨC
+<!--
+                <ion-item class="item-stable item-icon-left item-icon-right" menu-close href="#/app/news">
+                    <i class="icon ion-document-text"></i>TIN TỨC <i class="icon ion-ios-arrow-right"></i>
                 </ion-item>
+-->
+                <ion-item class="item-divider">Chuyên mục Tin Tức</ion-item>
                 <a class="item" ng-repeat="category in news.categories track by $index" menu-close href="#/app/news/category/{{category.slug}}">
                     {{category.title}}
                 </a>
                 
-                <ion-item class="item-divider">Tiện ích</ion-item>
+<!--
+                <ion-item class="item-button-right">
+                    <strong>ONEWAY RADIO</strong>
+                    <button class="button button-positive" menu-close href="#/app/audio">
+                        <i class="icon ion-ios-musical-notes"></i>
+                    </button>
+                </ion-item>
+                <ion-item class="item-button-right">
+                    <strong>TIN TỨC</strong>
+                    <button class="button button-positive" menu-close href="#/app/news">
+                        <i class="icon ion-document-text"></i>
+                    </button>
+                </ion-item>
+-->
+                
+                <ion-item class="item-divider"></ion-item>
                 
                 <ion-item class="item-icon-left" menu-close href="#/app/bookmark">
                     <i class="icon ion-bookmark"></i> Đánh dấu
-                </ion-item> 
-                <ion-item class="item-icon-left" menu-close href="#/app/playlist">
-                    <i class="icon ion-ios-list"></i> Playlist
                 </ion-item>              
                 <ion-item class="item-icon-left" menu-close href="#/app/history">
                     <i class="icon ion-reply-all"></i> Lịch sử

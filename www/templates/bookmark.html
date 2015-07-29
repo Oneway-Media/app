@@ -1,0 +1,50 @@
+<ion-view view-title="Bookmark">
+    <ion-header-bar class="bar-balanced item-input-inset">
+        <button class="button button-icon button-clear ion-navicon" menu-toggle="left"></button> 
+        
+        <label class="item-input-wrapper" style="border-radius: 100px;">
+            <i class="icon ion-ios-search placeholder-icon"></i>
+            <input type="text" placeholder="Tìm kiếm đánh dấu ..." ng-model="bookmarkFilter" />
+        </label>
+        
+        <button class="button button-stable button-icon button-clear ion-ios-close-empty" ng-click="bookmarkFilter=''"></button>
+        
+    </ion-header-bar>
+    
+    <div class="bar bar-subheader bar-stable">
+        
+        <div class="row no-padding">
+            <div class="col col-75 no-padding" style="padding-right:5px;">
+                <div class="button-bar">
+                    <button class="button button-balanced button-outline" ng-class="{active: currentBookmark == 'audio'}" ng-click="switchBookmark('audio')">Audio</button>
+                    <button class="button button-balanced button-outline" ng-class="{active: currentBookmark == 'news'}" ng-click="switchBookmark('news')">Tin tức</button>
+                </div>
+            </div>
+            <div class="col no-padding">
+                <div class="button-bar">                
+                    <button class="button button-assertive button-outline" ng-click="clearBookmark()" style="border-radius:2px;">Xóa</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <ion-content class="has-header has-subheader">
+        
+        
+        <ion-list class="list">            
+<!--            <ion-item class="item-divider">Hôm nay</ion-item> -->
+
+            <ion-item class="item item-thumbnail-left wrap_title" collection-repeat="bookmark in thisBookmark | filter:bookmarkFilter" ng-click="viewThisBookmark(bookmark.id)" ng-class="{'player_playing': player.playlist[player.indexing].id == item.id}">
+                <img ng-src="{{bookmark.thumbnail}}">
+                <h2>{{bookmark.title | clipText}}</h2>
+                <p>{{bookmark.date}}</p>
+                <span class="item_checked" ng-show="history[currentBookmark][item.id]"></span>
+                <div class="item_extra_buttons">
+                    <button class="button button-light icon ion-android-close" ng-click="deleteBookmark(bookmark.id);$event.stopPropagation();"></button>
+                </div>
+            </ion-item>
+        </ion-list>
+        
+        
+    </ion-content>
+</ion-view>

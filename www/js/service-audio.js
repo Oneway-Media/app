@@ -170,9 +170,9 @@ angular.module('service.audio', [])
                 initAudio: data
             });
             
-            player.audio.togglePlay();
+            //player.audio.togglePlay();
             
-            success(player);
+            success(player, data);
         });
     }
     
@@ -197,10 +197,12 @@ angular.module('service.audio', [])
     function getCategory(slug, success) {
         var key = 'ow-audio-lists',
             target = 'categories',
-            cache = cacheFactory.check({key:key,target:target,lifetime:this.lifetime});
+            cache = cacheFactory.check({key:key,target:target,lifetime:lifetime});
         
-        if(!cache) {    
-            success(data[0]);
+        if(!cache) {
+            audioFactory.category(slug).then(function (data) {
+                success(data[0]);
+            });
         } else {                   
             _.forEach( cacheFactory.get({key:key,target:target}), function (i) {
                 if(i.slug === slug) {
@@ -213,7 +215,7 @@ angular.module('service.audio', [])
     function getItem(id, success, fail) {
         var key = 'ow-audio-items',
             target = id,
-            cache = cacheFactory.check({key:key,target:target,lifetime:this.lifetime});
+            cache = cacheFactory.check({key:key,target:target,lifetime:lifetime});
 
         if(!cache) {
             if(id == 0) {
@@ -251,7 +253,7 @@ angular.module('service.audio', [])
             cache = false;
             
         if(!refresh) {
-            cache = cacheFactory.check({key:key,target:target,lifetime:this.lifetime})
+            cache = cacheFactory.check({key:key,target:target,lifetime:lifetime})
         }
 
         if(!cache) {
@@ -283,7 +285,7 @@ angular.module('service.audio', [])
             
             var key = 'ow-audio-items',
                 target = id,
-                cache = cacheFactory.check({key:key,target:target,lifetime:this.lifetime});
+                cache = cacheFactory.check({key:key,target:target,lifetime:lifetime});
 
             if(!cache) {
                 audioFactory.item(id).then(function (data) {

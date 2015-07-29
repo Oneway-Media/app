@@ -2,129 +2,149 @@
     
     <ion-header-bar class="bar-balanced">        
         <button class="button button-icon button-clear ion-navicon" menu-toggle="left">&nbsp;</button> 
-        <h1 class="title">AUDIO</h1>
-        <button class="button button-clear icon ion-ios-search" ng-click="search.openSearchPanel()"></button>       
-    </ion-header-bar>    
+        <h1 class="title">Oneway Radio</h1>
+        <button class="button button-clear icon ion-ios-search" ng-click="search.openSearchPanel('audio',null)"></button>       
+    </ion-header-bar>
     
-    <ion-content class="has-header">
-        <ion-refresher
-        pulling-text="Pull to refresh ..."
-        on-refresh="audio.init()">
-        </ion-refresher>
-               
-        <div class="grid-container-fluid">
-            <div class="grid-row">
-                               
-                <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2"></div>                
-                
-                <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
-                    
-                    <!-- Actions -->
-                    <div class="list card">
-                        <div class="item item-divider">Thao tác: </div>
-<!--
-                        <a class="item item-icon-right" href="#/app/audio/categories">
-                            CÁC CHƯƠNG TRÌNH RADIO <i class="icon ion-ios-arrow-forward"></i>
-                        </a>                        
--->
-                        <a class="item item-icon-left item-icon-right" href="#/app/audio/surprise">
-                            <i class="icon ion-wand"></i>
-                            TRỢ LÝ <i class="icon ion-ios-arrow-forward"></i>
-                        </a>
-                        
-                    </div>
-                    
-                    <!-- Radio Online -->
-                    <div class="list card">
-<!--
-                        <div class="item item-text-wrap home_colorblock item-balanced">
-                            <h1>Radio Trực tuyến</h1>
-                        </div>
--->
+    <ion-tabs class="tabs-stable tabs-icon-top tabs-top">
 
-                        <div class="item item-text-wrap">
-                            <h1 style="font-size: 1.5em;">Radio Trực tuyến</h1>
-                            <p>Radio Trực tuyến &mdash; Phát thanh liên tục 24/7.</p>
-                        </div>
+        <ion-tab title="Home" icon-on="ion-ios-home" icon-off="ion-ios-home-outline">
+            <ion-content class="has-header has-tabs-top">
 
-                        <div class="item tabs tabs-secondary">
-                            <a class="tab-item balanced" ng-click="audio.playThis(0)">
-                                <strong>NGHE</strong>
-                            </a>
-                            <a class="tab-item" ng-click="audio.openViewThisModal(0)">
-                                Lịch phát
-                            </a>
-                        </div>                    
-                    </div>
-                    
-                    <!-- Tinh nguyen hang ngay -->
-                    <div class="list card" ng-repeat="item in audio.TNHN">
-                        <div class="item item-text-wrap home_colorblock item-balanced" style="background: url({{item.cover}})">                 
-                            <h1>TNHN hôm nay</h1>
-                        </div>
+                <ion-refresher
+                pulling-text="Pull to refresh ..."
+                on-refresh="audio.init()">
+                </ion-refresher>
 
-                        <div class="item item-text-wrap">
-                            <h1 style="font-size: 1.5em;">{{item.title}}</h1>
-                        </div>
+                <div class="grid-container-fluid"> <div class="grid-row"> <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2"></div>                
 
-                        <div class="item tabs tabs-secondary">
-                            <a class="tab-item balanced" ng-click="audio.playThis(item.id)">
-                                <strong>NGHE</strong>
-                            </a>
-                            <a class="tab-item" ng-click="audio.openViewThisModal(item.id)">
-                                Nội dung
-                            </a>
-                        </div>
-                    </div>
-                  
-                    
-                    <div class="list card">
-                        <div class="item item-divider">Chương trình Radio:</div>
-                        <a class="item item-icon-left" ng-repeat="category in audio.categories track by $index" href="#/app/audio/category/{{category.slug}}">
-                            <i class="icon {{category.slug}}"></i>
-                            {{category.title}}
-                            <span class="badge badge-stable">{{category.count}}</span>
-                        </a>
-                    </div>
-                    
-<!--
-                    <div class="card collection_within">
+                        <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
 
-                        <ion-list>
-                            <div class="item item-divider">Audio đã phát:
-                                <span class="badge badge-balanced">3333</span>
-                            </div>
-                            <a class="item item-thumbnail-left wrap_title" collection-repeat="audio in audio['tat-ca']">
-                                <img ng-src="{{audio.thumbnail}}">
-                                <h2>{{audio.title | clip}}</h2>
-                                <p>{{audio.date | date}}</p>
-                                <div class="general_extra_buttons">
-                                    <button class="button button-light icon ion-ios-play" ng-click="$event.stopPropagation();"></button>
-                                    <button class="button button-light icon ion-android-add" ng-click="$event.stopPropagation();"></button>
-                                    <button class="button button-light icon ion-android-share-alt" ng-click="$event.stopPropagation();"></button>
+                            <!-- Radio Online -->
+                            <div class="list card" ng-repeat="item in audio.RADIO">
+
+                                <div class="item item-text-wrap card_colorblock item-balanced" style="background: url({{item.cover}})">
+                                    <h1>&nbsp;</h1>
+                                    <button style="color:#FFF;" class="button button-clear button-light" ng-click="audio.playThisRaw(item.id)"><i class="icon ion-share"></i></button>
+                                </div>                            
+                                <div class="item item-text-wrap">
+                                    <h1 style="font-size: 1.3em;">{{item.title}}</h1>
                                 </div>
-                            </a>
-                        </ion-list>
-                    </div>
+                                <div class="item tabs tabs-secondary">
+                                    <a class="tab-item assertive" ng-click="audio.playThis(item.id)">
+                                        <strong>NGHE</strong>
+                                    </a>
+                                    <a class="tab-item" ng-click="audio.openViewThisModal(item.id)">
+                                        Lịch phát
+                                    </a>
+                                </div>                    
+                            </div>
+
+
+                            <!-- Tinh nguyen hang ngay -->
+                            <div class="list card" ng-repeat="item in audio.TNHN">
+
+                                <div class="item item-text-wrap card_colorblock item-balanced" style="background: url({{item.cover ? item.cover: item.thumbnail}})">                 
+                                    <h1>&nbsp;</h1>
+                                    <button style="color:#FFF;" class="button button-clear button-light" ng-click="audio.playThisRaw(item.id)"><i class="icon ion-share"></i></button>
+                                </div>
+                                <div class="item item-text-wrap">
+                                    <h1 style="font-size: 1.3em;">{{item.title}}</h1>
+                                </div>
+                                <div class="item tabs tabs-secondary">
+                                    <a class="tab-item assertive" ng-click="audio.playThis(item.id)">
+                                        <strong>NGHE</strong>
+                                    </a>
+                                    <a class="tab-item" ng-click="audio.openViewThisModal(item.id)">
+                                        Nội dung
+                                    </a>
+                                    <a class="tab-item" href="#/app/audio/category/tinh-nguyen-hang-ngay">
+                                        TNHN
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="list card" style="box-shadow:none;">
+                                <ion-item ng-click="" style="text-align:center;color:#b2b2b2;background:none;"></ion-item>
+                            </div>
+<!--
+                            <div class="list card" style="box-shadow:none;">
+                                <ion-item ng-click="" style="text-align:center;color:#b2b2b2;">Tải thêm ...</ion-item>
+                            </div>
 -->
-                    
-                    
+
+                        </div>
+
+                        <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2"></div></div>           
+                </div>
+
+        <!--
+                <ion-infinite-scroll
+                ng-if="audio.canBeMore('tat-ca')"
+                on-infinite="audio.loadMore('tat-ca')"
+                distance="1%"
+                immediate-check="false">
+                </ion-infinite-scroll>
+        -->
+
+            </ion-content>
+        </ion-tab>
+        
+        
+        
+        
+
+        <ion-tab title="Chương trình" icon-on="ion-ios-list" icon-off="ion-ios-list-outline">
+            <ion-content class="has-header has-tabs-top">
+                <div class="list card">
+                    <div class="item item-divider">Chương trình Radio</div>
+                    <a class="item item-icon-left" ng-repeat="category in audio.categories track by $index" href="#/app/audio/category/{{category.slug}}">
+                        <i class="icon {{category.slug}}"></i>
+                        {{category.title}}
+                        <span class="badge badge-stable">{{category.count}}</span>
+                    </a>
                 </div>
                 
-                <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2"></div>
+                <div class="list card" style="box-shadow:none;">
+                    <ion-item ng-click="" style="text-align:center;color:#b2b2b2;background:none;"></ion-item>
+                </div>
                 
-            </div>           
-        </div>
+            </ion-content>
+        </ion-tab>
         
+        
+        
+        
+
+        <ion-tab title="More" icon-on="ion-ios-more" icon-off="ion-ios-more-outline">
+            <ion-content class="has-header has-tabs-top">              
+
+                <!-- Actions -->
+                <div class="list card">
+                    <div class="item item-divider">More</div>
+
+                    <a class="item item-icon-left" href="#/app/audio/surprise">
+                        <i class="icon ion-wand"></i>Trợ lý
+                    </a>
+
+                    <ion-item class="item-icon-left" href="#/app/audio/playlist">
+                        <i class="icon ion-ios-list"></i> Playlist
+                    </ion-item>
 <!--
-        <ion-infinite-scroll
-        ng-if="audio.canBeMore('tat-ca')"
-        on-infinite="audio.loadMore('tat-ca')"
-        distance="1%"
-        immediate-check="false">
-        </ion-infinite-scroll>
--->
-        
-    </ion-content>
+                    <a class="item item-icon-left item-icon-right" ng-click="history.get('audio')">
+                        Audio History
+                    </a>
+-->                
+                </div>
+                
+                <div class="list card" style="box-shadow:none;">
+                    <ion-item ng-click="" style="text-align:center;color:#b2b2b2;background:none;"></ion-item>
+                </div>  
+                        
+            </ion-content>
+        </ion-tab>
+
+    </ion-tabs>
+    
     
 </ion-view>
